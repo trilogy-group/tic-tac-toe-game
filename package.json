@@ -6,7 +6,7 @@
   "scripts": {
     "play": "tsc && node dist/tictactoe.js",
     "build": "tsc",
-    "test": "jest",
+    "test": "jest --verbose",
     "prettify": "prettier --write \"**/*.ts\""
   },
   "repository": {
@@ -14,7 +14,6 @@
     "url": "git+https://github.com/trilogy-group/invocables-typescript.git"
   },
   "keywords": [],
-  "author": "Ashwanth A R <ashwanth1109@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/trilogy-group/invocables-typescript/issues"
@@ -27,12 +26,13 @@
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
     "eslint": "^8.10.0",
-    "jest": "26.6.3",
+    "jest": "^26.2.2",
     "ts-jest": "26.5.5",
     "ts-node": "9.1.1",
     "typescript": "^4.2.2"
   },
   "dependencies": {
+    "axios": "^0.26.0",
     "express": "^4.17.1"
   }
 }

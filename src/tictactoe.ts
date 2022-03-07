@@ -6,12 +6,12 @@ const rl = readline.createInterface({
     output: stdout
 });
 
-let grid: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+export let grid: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 let turn: number = 9;
 let status: number = 0;
 
 
-const num = {
+export const num = {
     "1": 0,
     "2": 1,
     "3": 2,
@@ -33,13 +33,13 @@ export function validNumber(move: string): boolean{
     return false;
 }
 
-export function getlineone():string{
+export function getlineone(grid: string[]):string{
     return `${grid[0]}|${grid[1]}|${grid[2]}`;
 }
-export function getlinetwo():string{
+export function getlinetwo(grid: string[]):string{
     return `${grid[3]}|${grid[4]}|${grid[5]}`;
 }
-export function getlinethree():string{
+export function getlinethree(grid:string[]):string{
     return `${grid[6]}|${grid[7]}|${grid[8]}`;
 }
 
@@ -52,9 +52,9 @@ export function tictactoe(move: string): void{
     }
 }
 
-let grid1: string = getlineone();
-let grid2: string = getlinetwo();
-let grid3: string = getlinethree();
+let grid1: string = getlineone(grid);
+let grid2: string = getlinetwo(grid);
+let grid3: string = getlinethree(grid);
 let pn: number = 1;
 let ps: string = "1";
 
@@ -119,9 +119,9 @@ export function checkStatus(): void{
 
 
 export function runGame():void{
-    grid1 = getlineone();
-    grid2 = getlinetwo();
-    grid3 = getlinethree();
+    grid1 = getlineone(grid);
+    grid2 = getlinetwo(grid);
+    grid3 = getlinethree(grid);
     pn = turn%2;
     if(pn==0)
     ps = "2";
@@ -139,9 +139,9 @@ export function runGame():void{
         if(turn>0)
         runGame();
         else{
-            grid1 = getlineone();
-            grid2 = getlinetwo();
-            grid3 = getlinethree();
+            grid1 = getlineone(grid);
+            grid2 = getlinetwo(grid);
+            grid3 = getlinethree(grid);
             if(status==0)
             console.log(grid1+"\n"+grid2+"\n"+grid3+"\nGame Drawn\n");
             else
