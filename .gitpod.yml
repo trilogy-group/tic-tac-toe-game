@@ -5,8 +5,3 @@ ports:
 tasks:
   - init: npm install
     command: cd /usr/src/devserver/ && npm start
-
-vscode:
-  extensions:
-    - vscode.typescript@1.54.3:c2488834b57ba3413e7d43db2af0ed77
-    - vscode.yaml@1.54.3:0b2f74133505286388c043a52494168d
