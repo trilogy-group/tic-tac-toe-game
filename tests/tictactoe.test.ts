@@ -1,15 +1,20 @@
-import {validNumber,grid,num,getlineone,getlinetwo,getlinethree,tictactoe,checkStatus,runGame} from "../src/tictactoe";
-import { describe, expect, test} from '@jest/globals';
+import {validNumber,getlineone,getlinetwo,getlinethree} from "../src/tictactoe";
+import {describe,expect,test} from '@jest/globals';
 import each from "jest-each";
 
 
 describe("validNumber", () => {
-    each(["1", "2", "3", "4", "5", "6", "7", "8", "9"])
+
+    test("numbers", () => {
+        expect(validNumber("1")).toBe(true);
+    });
+
+    each(["1", "2", "3"])
     .test("numbers", (input) => {
         expect(validNumber(input)).toBe(true);
     });
 
-    each(["a", " ", "", "1 ", "q"])
+    each(["a", " ", ""])
     .test("other", (input) => {
         expect(validNumber(input)).toBe(false);
     });

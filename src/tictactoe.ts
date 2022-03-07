@@ -43,7 +43,7 @@ export function getlinethree(grid:string[]):string{
     return `${grid[6]}|${grid[7]}|${grid[8]}`;
 }
 
-export function tictactoe(move: string): void{
+function tictactoe(move: string): void{
     if(turn%2==1){
         grid[num[move]] = "X";
     }

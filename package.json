@@ -5,7 +5,6 @@
   "main": "dist/app.js",
   "scripts": {
     "play": "tsc && node dist/tictactoe.js",
-    "build": "tsc",
     "test": "jest --verbose",
     "prettify": "prettier --write \"**/*.ts\""
   },
