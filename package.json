@@ -4,7 +4,6 @@
   "description": "## Commands",
   "main": "dist/app.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
     "play": "tsc && node dist/tictactoe.js",
     "build": "tsc",
     "test": "jest",
