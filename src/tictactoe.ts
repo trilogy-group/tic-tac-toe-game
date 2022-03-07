@@ -117,8 +117,8 @@ export function checkStatus(): void{
     }
 }
 
+
 export function runGame():void{
-    console.log(turn);
     grid1 = getlineone();
     grid2 = getlinetwo();
     grid3 = getlinethree();
