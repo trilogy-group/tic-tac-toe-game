@@ -153,7 +153,57 @@ function runGame():void{
     });
 }
 
+function sendResult(status:number):string{
+    if(status==0)
+    return "Game Drawn";
+    else if(status==1)
+    return "Player 1 won";
+    else
+    return "Player 2 won";
+}
+
 
 runGame();
+
+
+interface ActionInput {
+    body:{
+        response: string;
+    };
+    headers?: {
+      [key: string]: string;
+    };
+  }
+  
+  interface ActionOutput {
+    statusCode: number;
+    body: string;
+  }
+  
+  export const handler = async (input: string): Promise<ActionOutput> => {
+    try {
+      // Add business logic here
+      const { body, headers } = JSON.parse(input) as ActionInput;
+      // You can skip headers if you do not need them
+      console.log(headers);
+  
+      const response = body.response;
+  
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ response }),
+      };
+    } catch (e) {
+      console.error(e);
+  
+      return {
+        statusCode: 500,
+        body: JSON.stringify({
+          errorMessage: e.message,
+          errorType: "",
+        }),
+      };
+    }
+  };
 
 
