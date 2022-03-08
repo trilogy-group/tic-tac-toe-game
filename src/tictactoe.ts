@@ -58,67 +58,69 @@ let grid3: string = getlinethree(grid);
 let pn: number = 1;
 let ps: string = "1";
 
-export function checkStatus(): void{
-    if(grid[0]==grid[1] && grid[2]==grid[1]){
+export function checkStatus(grid: string[]): number{
+    status = 0;
+    if(status==0 && grid[0]==grid[1] && grid[2]==grid[1]){
         if(grid[0]=="X")
         status = 1;
-        else
+        if(grid[0]=="O")
         status = 2;
         turn = 0;
     }
-    if(grid[3]==grid[4] && grid[4]==grid[5]){
+    if(status==0 && grid[3]==grid[4] && grid[4]==grid[5]){
         if(grid[3]=="X")
         status = 1;
-        else
+        if(grid[3]=="O")
         status = 2;
         turn = 0;
     }
-    if(grid[6]==grid[7] && grid[7]==grid[8]){
+    if(status==0 && grid[6]==grid[7] && grid[7]==grid[8]){
         if(grid[6]=="X")
         status = 1;
-        else
+        if(grid[6]=="O")
         status = 2;
         turn = 0;
     }
-    if(grid[0]==grid[3] && grid[3]==grid[6]){
+    if(status==0 && grid[0]==grid[3] && grid[3]==grid[6]){
         if(grid[0]=="X")
         status = 1;
-        else
+        if(grid[0]=="O")
         status = 2;
         turn = 0;
     }
-    if(grid[4]==grid[1] && grid[7]==grid[1]){
+    if(status==0 && grid[4]==grid[1] && grid[7]==grid[1]){
         if(grid[1]=="X")
         status = 1;
-        else
+        if(grid[1]=="O")
         status = 2;
         turn = 0;
     }
-    if(grid[5]==grid[8] && grid[2]==grid[5]){
+    if(status==0 && grid[5]==grid[8] && grid[2]==grid[5]){
         if(grid[5]=="X")
         status = 1;
-        else
+        if(grid[5]=="O")
         status = 2;
         turn = 0;
     }
-    if(grid[0]==grid[4] && grid[4]==grid[8]){
+    if(status==0 && grid[0]==grid[4] && grid[4]==grid[8]){
         if(grid[0]=="X")
         status = 1;
-        else
+        if(grid[0]=="O")
         status = 2;
         turn = 0;
     }
-    if(grid[4]==grid[6] && grid[2]==grid[4]){
+    if(status==0 && grid[4]==grid[6] && grid[2]==grid[4]){
         if(grid[4]=="X")
         status = 1;
-        else
+        if(grid[4]=="O")
         status = 2;
         turn = 0;
     }
+    return status;
 }
 
 
-export function runGame():void{
+function runGame():void{
     grid1 = getlineone(grid);
     grid2 = getlinetwo(grid);
     grid3 = getlinethree(grid);
@@ -131,7 +133,7 @@ export function runGame():void{
         if(validNumber(answer)){
             tictactoe(answer);
             turn-=1;
-            checkStatus();
+            status = checkStatus(grid);
         }
         else{
         console.log("\nInput is wrong or taken\n\n");
