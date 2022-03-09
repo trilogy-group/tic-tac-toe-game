@@ -1,21 +1,23 @@
-interface ActionInput {
-  body:{
-    status: number;
-  };
-  headers?: {
-    [key: string]: string;
-  };
-}
 
-interface ActionOutput {
-  statusCode: number;
-  body: string;
+ import { generateOutput } from "../utils";
+ import { StatusCodes } from "../constants";
+ import { ActionOutput, GenericActionInput, ContextSchema } from "../types";
+
+
+ interface InputSchema {
+  status: number;
+}
+interface ActionInput extends GenericActionInput {
+  body: InputSchema;
+  context: ContextSchema;
 }
 
 export const handler = async (input: string): Promise<ActionOutput> => {
   try {
     // Add business logic here
-    const { body, headers } = JSON.parse(input) as ActionInput;
+     const inputAsJson: ActionInput = JSON.parse(input);
+     const { body } = inputAsJson;
+     const { context } = inputAsJson;
     // You can skip headers if you do not need them
 
     const { status } = body;
