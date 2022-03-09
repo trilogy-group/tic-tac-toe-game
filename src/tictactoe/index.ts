@@ -1,24 +1,23 @@
-
- import { generateOutput } from "../utils";
- import { StatusCodes } from "../constants";
- import { ActionOutput, GenericActionInput, ContextSchema } from "../types";
-
-
- interface InputSchema {
-  status: number;
+interface ActionInput {
+  body:{
+    status: number;
+  };
+  headers?: {
+    [key: string]: string;
+  };
 }
-interface ActionInput extends GenericActionInput {
-  body: InputSchema;
-  context: ContextSchema;
+
+interface ActionOutput {
+  statusCode: number;
+  body: string;
 }
 
 export const handler = async (input: string): Promise<ActionOutput> => {
   try {
     // Add business logic here
-     const inputAsJson: ActionInput = JSON.parse(input);
-     const { body } = inputAsJson;
-     const { context } = inputAsJson;
+    const { body, headers } = JSON.parse(input) as ActionInput;
     // You can skip headers if you do not need them
+    console.log(headers);
 
     const { status } = body;
     let response:string;
@@ -30,7 +29,7 @@ export const handler = async (input: string): Promise<ActionOutput> => {
     else if(status==2)
     response = "Player 2 won";
     else
-    response = "error";
+    response = "Error";
 
     return {
       statusCode: 200,

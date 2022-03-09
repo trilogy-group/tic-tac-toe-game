@@ -153,14 +153,6 @@ function runGame():void{
     });
 }
 
-function sendResult(status:number):string{
-    if(status==0)
-    return "Game Drawn";
-    else if(status==1)
-    return "Player 1 won";
-    else
-    return "Player 2 won";
-}
 
 
 runGame();
